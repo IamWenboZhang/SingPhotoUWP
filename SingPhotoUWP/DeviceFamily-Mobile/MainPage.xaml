@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="SingPhotoUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SingPhotoUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="唱图" Grid.Row="0" Grid.Column="1" FontSize="35" Grid.ColumnSpan="1"  HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Segoe UI"/>
+        <Button x:Name="Btn_History" Content="历史记录" Style="{StaticResource ShadowButtonStyle}" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="20" Foreground="#FF010406" UseSystemFocusVisuals="True" FontFamily="Segoe UI"/>
+
+        <Border Margin="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Grid.Row="1" Grid.Column="1" BorderThickness="3,3,3,3" BorderBrush="#FFC5C5C5">
+            <Image x:Name="Image_Thumbnail"  Margin="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Grid.Row="1" Grid.Column="1" Stretch="UniformToFill"/>
+        </Border>
+        
+        <Button x:Name="Btn_ChoosePhoto" Height="80" Width="80"  Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"
+VerticalAlignment="Center"  Content="选择图片" Style="{StaticResource CircleButton}" Click="Btn_ChoosePhoto_Click" FontSize="12"/>
+        <Button x:Name="Btn_StartUpload" Height="80" Width="80"  Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"
+VerticalAlignment="Center"  Content="开始识别" Style="{StaticResource CircleButton}" Click="Btn_StartUpload_Click" FontSize="12"/>
+
+        <controls:Loading x:Name="LoadingControl" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" HorizontalContentAlignment="Center" 
+                          VerticalContentAlignment="Center">
+            <controls:Loading.Background>
+                <SolidColorBrush Color="WhiteSmoke" Opacity="0.7"/>
+            </controls:Loading.Background>
+            <ContentControl x:Name="LoadingContentControl">
+                <StackPanel Orientation="Horizontal" Padding="12">
+                    <ProgressRing IsActive="True" Margin="0,0,12,0" Foreground="Blue" FontFamily="Segoe UI"/>
+                    <TextBlock Text="分析中请稍候~" VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+            </ContentControl>
+        </controls:Loading>
+    </Grid>
+</Page>
